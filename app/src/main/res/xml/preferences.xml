@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <CheckBoxPreference android:key="spl"
+        android:title="Splash Screen"
+        android:summary="Turn on/off splash screen." />
+
+    <PreferenceCategory android:title="User information">
+        <EditTextPreference android:title="Name" android:key="name"></EditTextPreference>
+        <EditTextPreference android:title="Last name" android:key="lastname"></EditTextPreference>
+        <EditTextPreference android:title="Address" android:key="address"></EditTextPreference>
+        <EditTextPreference android:title="Phone number" android:key="phonenumber"></EditTextPreference>
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:title="Places radius"
+        android:key="radius_settings">
+
+        <ListPreference
+            android:dialogTitle="Radius lookup"
+            android:entries="@array/pref_radiusConnectionTypes_entries"
+            android:entryValues="@array/pref_radiusConnectionTypes_values"
+            android:key="pref_radius"
+            android:title="Radius lookup"
+            android:summary="%s"
+            android:defaultValue="1"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

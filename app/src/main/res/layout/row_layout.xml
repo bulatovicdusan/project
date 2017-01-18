@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_icon"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:src="@drawable/girosssss"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Giros Land"
+        android:textSize="25dp"
+        android:textColor="@color/orange2"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginLeft="13dp"
+        android:id="@+id/item_name"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/item_icon"
+        android:layout_toRightOf="@+id/item_icon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="Serbian food, Grill, Mediterranean food, Greek food Gyros, chicken, pljeskavitsa, burgers..."
+        android:layout_toRightOf="@id/item_icon"
+        android:layout_below="@id/item_name"
+        android:id="@+id/descRest" />
+
+
+
+
+</RelativeLayout>
