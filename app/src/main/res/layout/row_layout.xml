@@ -17,16 +17,16 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:adjustViewBounds="true"
-        android:maxHeight="100dp"
+        android:maxHeight="80dp"
         android:maxWidth="100dp"
-        android:src="@drawable/girosssss"/>
+        android:src="@drawable/toster"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Giros Land"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textColor="@color/orange2"
         android:fontFamily="sans-serif-light"
         android:layout_marginLeft="13dp"

@@ -1,7 +1,10 @@
 package com.example.dusan.food.activities;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.service.notification.NotificationListenerService;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,20 +13,27 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dusan.food.Fragments.TabFragment2;
 import com.example.dusan.food.R;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by wubon on 1/18/2017.
  */
-public class MealActivity extends AppCompatActivity {
+public class MealActivity extends AppCompatActivity implements View.OnClickListener{
 
 
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
+    private Button button;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,25 +41,9 @@ public class MealActivity extends AppCompatActivity {
         setContentView(R.layout.meal_info_layout);
 
 
-
-
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mNavigationView = (NavigationView) findViewById(R.id.shitstuff);
 
-        /**
-         * Lets inflate the very first fragment
-         * Here , we are inflating the TabFragment as the first Fragment
-         */
-
-
-        /**
-         * Setup click events on the Navigation View Items.
-         */
-
-
-        /**
-         * Setup Drawer Toggle of the Toolbar
-         */
 
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,10 +56,27 @@ public class MealActivity extends AppCompatActivity {
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout, toolbar,R.string.app_name,
                 R.string.app_name);
 
-        //mDrawerLayout.setDrawerListener(mDrawerToggle);
-        //mDrawerToggle.syncState();
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+
+
+        TextView mealName = (TextView) findViewById(R.id.nazivJela);
+        mealName.setText(getIntent().getStringExtra("name"));
+        TextView mealDesc = (TextView) findViewById(R.id.opisJela);
+        mealDesc.setText(getIntent().getStringExtra("descr"));
+        TextView price = (TextView) findViewById(R.id.price);
+        price.setText(getIntent().getStringExtra("price") + " din");
+
+        button = (Button) findViewById(R.id.buybutton);
+        button.setOnClickListener(this);
+
+
+
+
 
     }
+
+
 
 
 
@@ -91,6 +102,20 @@ public class MealActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(this, "Processing order ...", Toast.LENGTH_LONG).show();
+        final Toast tag = Toast.makeText(getBaseContext(), getIntent().getStringExtra("name"),Toast.LENGTH_SHORT);
 
+        tag.show();
 
+        new CountDownTimer(9000, 1000)
+        {
+
+            public void onTick(long millisUntilFinished) {tag.show();}
+            public void onFinish() {tag.show();}
+
+        }.start();
+        Toast.makeText(this,"Order completed !",Toast.LENGTH_SHORT).show();
+    }
 }

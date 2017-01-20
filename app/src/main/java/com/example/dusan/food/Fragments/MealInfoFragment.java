@@ -1,6 +1,7 @@
 package com.example.dusan.food.Fragments;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,8 +17,11 @@ import com.example.dusan.food.R;
 import com.example.dusan.food.activities.MealActivity;
 import com.example.dusan.food.activities.RestaurantActivity;
 import com.example.dusan.food.database.DatabaseAdapter;
+import com.example.dusan.food.database.MyDBHandler;
 import com.example.dusan.food.model.Meal;
 import com.example.dusan.food.model.Restaurant;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,9 @@ import java.util.ArrayList;
  */
 public class MealInfoFragment extends Fragment {
     ArrayList<Meal> meals;
+    MyDBHandler myDBHandler;
+    public static final String TABLE_MEALS = "meals";
+    public static final String COLUMN_ID_RESTORANA= "idRestorana";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -41,6 +48,9 @@ public class MealInfoFragment extends Fragment {
 
         meals = new ArrayList<>();
 
+
+        int res_id = getActivity().getIntent().getIntExtra("id",0);
+      //  myDBHandler.getAllMealById(res_id);
         retrieveData();
         populateListView();
         registerClickBack();
@@ -57,14 +67,18 @@ public class MealInfoFragment extends Fragment {
 
 
 
+
         while (c.moveToNext()){
 
             int id = c.getInt(0);
             String name = c.getString(1);
             String desc = c.getString(2);
             Double price = c.getDouble(3);
+            Integer idRest = c.getInt(4);
+            Integer idTag = c.getInt(5);
 
-            Meal m = new Meal(id, name, desc, price);
+
+            Meal m = new Meal(id, name, desc, price,idRest, idTag);
 
 
 
@@ -105,6 +119,7 @@ public class MealInfoFragment extends Fragment {
                 itemView = getActivity().getLayoutInflater().inflate(R.layout.row_meals_layout, parent, false);
             }
 
+
             Meal currentMeal = meals.get(position);
 
 
@@ -112,6 +127,8 @@ public class MealInfoFragment extends Fragment {
             makeText.setText(currentMeal.getName());
             TextView mText = (TextView) itemView.findViewById(R.id.descMeal);
             mText.setText(currentMeal.getDescription());
+
+
 
 
 
@@ -128,10 +145,17 @@ public class MealInfoFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
+
+
+
                 Meal clickedMeal = meals.get(position);
+                Double cenaDouble = clickedMeal.getPrice();
+                String cena = cenaDouble.toString();
                 Intent i = new Intent(getActivity().getApplicationContext(), MealActivity.class);
                 i.putExtra("name", clickedMeal.getName());
                 i.putExtra("descr", clickedMeal.getDescription());
+                i.putExtra("price", cena);
                 startActivity(i);
 
             }

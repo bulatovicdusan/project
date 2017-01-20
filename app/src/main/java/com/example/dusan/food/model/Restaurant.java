@@ -26,6 +26,7 @@ public class Restaurant {
     private URL site;
     private List<Meal> meals;
     private String img;
+    private String addressa;
 
 
     public int getId() {
@@ -145,6 +146,14 @@ public class Restaurant {
         this.description = description;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public Restaurant() {
     }
 
@@ -159,5 +168,28 @@ public class Restaurant {
         this.name = name;
         this.description = description;
         this.img = img;
+    }
+
+
+    public Restaurant(int id, String name, String description, String img, String addressa, int startHour,  int endHour, String phone, String email) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.img = img;
+        this.addressa = addressa;
+        this.startHour = startHour;
+
+        this.endHour = endHour;
+
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public String getAddressa() {
+        return addressa;
+    }
+
+    public void setAddressa(String addressa) {
+        this.addressa = addressa;
     }
 }

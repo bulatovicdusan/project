@@ -19,86 +19,153 @@
     <ImageView
 
         android:id="@+id/slika"
-        android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:src="@drawable/girosssss"
-        android:layout_marginTop="20dp"/>
-
+        android:src="@drawable/girosvelika"
+        android:layout_marginTop="0dp"/>
 
 
 
     <TextView
+        android:layout_marginLeft="20dp"
         android:textStyle="bold"
         android:textColor="@color/orange2"
         android:id="@+id/nazivRestorana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/slika"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/slika"
         android:textSize="25dp"
         android:text=""
         />
 
 
-    <TextView
-        android:id="@+id/adresaRestorana"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nazivRestorana"
-        android:text="Bulevar Oslobodjenja 33"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
-
-
-    <TextView
-        android:textStyle="bold"
-        android:id="@+id/pocetnoVreme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/adresaRestorana"
-        android:text="19:00"
-        android:textSize="20dp"
-        android:layout_marginLeft="130dp"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:textStyle="bold"
-        android:id="@+id/krajnjeVreme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/adresaRestorana"
-        android:text="23:00"
-        android:textSize="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/pocetnoVreme"
-        android:layout_marginTop="10dp"/>
-
 
 
         <RelativeLayout
-            android:layout_below="@+id/pocetnoVreme"
-            android:id="@+id/opisRestoranaRelative"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/opisbackground"
-            >
+            android:layout_below="@+id/linija"
+            android:id="@+id/opis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
 
             <TextView
-
-
-                android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
                 android:id="@+id/opisRestorana"
-                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Neki opis tamo"
+                android:layout_toRightOf="@+id/moreTxt"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="50dp"
 
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:textSize="40px"
-                android:text=""
+                android:layout_below="@+id/startHour" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:text="ADDRESS"
+                android:id="@+id/adresaTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_below="@+id/timings"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:text="MORE"
+                android:id="@+id/moreTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_marginLeft="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_toRightOf="@+id/adresaTxt"
+                android:id="@+id/adresaRestorana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bulevar Oslobodjenja 33"
+
                 />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="22dp"
+                android:id="@+id/timings"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_below="@+id/adresaTxt"
+                android:text="TIMINGS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="15dp"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/timings"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="From"
+                android:layout_alignTop="@+id/timings"
+                android:id="@+id/textView" />
+
+
+
+
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="70dp"
+                android:layout_below="@+id/adresaRestorana"
+                android:layout_toRightOf="@id/timings"
+                android:textStyle="bold"
+                android:id="@+id/startHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="19"
+                android:textSize="20dp"
+                />
+
+
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="10dp"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="To"
+                android:layout_alignTop="@+id/textView"
+                android:layout_toRightOf="@+id/startHour"
+                android:layout_toEndOf="@+id/startHour" />
+
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/endHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/adresaRestorana"
+                android:text="23"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_toRightOf="@+id/startHour" />
 
 
         </RelativeLayout>
@@ -106,65 +173,83 @@
 
 
 
-
-
-
-
-
-
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
 
-            android:layout_below="@+id/opisRestoranaRelative"
+            android:layout_below="@+id/linija2"
             xmlns:map="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/mapaRestoranInfo"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="300dp"
             tools:context="com.imaadv.leaynik.ClinicFragment" />
 
-        <RelativeLayout
-            android:background="@color/greey2"
-            android:layout_below="@+id/mapaRestoranInfo"
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/linija2"
+            android:layout_below="@+id/opis"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="5dp"
+           android:background="@color/cetvrta"
+            />
 
-            <Button
+
+        <ImageView
+            android:id="@+id/linija"
+            android:layout_below="@+id/buttoniRelative"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/cetvrta"/>
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/buttoniRelative"
+            android:background="@color/white"
+            android:layout_below="@+id/nazivRestorana"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageButton
+                android:src="@drawable/phone"
                 android:layout_marginLeft="10dp"
                 android:text="Call"
-                android:background="@color/greey2"
+                android:background="@color/green2"
                 android:textColor="@color/white"
                 android:id="@+id/callButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="100dp"
+                android:layout_height="40dp" />
             <Button
-                android:layout_marginLeft="4dp"
-                android:background="@color/greey2"
-                android:textColor="@color/white"
+
+
+                android:layout_marginLeft="5dp"
+                android:background="@color/white"
+                android:textColor="@color/black"
                 android:text="Email"
                 android:id="@+id/emailButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_toRightOf="@+id/callButton"/>
             <Button
-                android:layout_marginLeft="4dp"
+
+                android:layout_marginLeft="5dp"
                 android:text="Site"
-                android:background="@color/greey2"
-                android:textColor="@color/white"
+                android:background="@color/white"
+                android:textColor="@color/black"
                 android:layout_toRightOf="@id/emailButton"
                 android:id="@+id/siteButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="40dp" />
 
             <Button
-                android:layout_marginLeft="4dp"
-                android:background="@color/greey2"
-                android:textColor="@color/white"
+
+                android:layout_marginRight="7dp"
+                android:layout_marginLeft="5dp"
+                android:background="@color/white"
+                android:textColor="@color/black"
                 android:text="Share"
                 android:layout_toRightOf="@id/siteButton"
                 android:id="@+id/shareButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="40dp" />
 
 
         </RelativeLayout>

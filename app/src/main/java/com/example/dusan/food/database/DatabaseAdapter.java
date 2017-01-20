@@ -7,6 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
+import com.example.dusan.food.model.Meal;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by wubon on 1/10/2017.
  */
@@ -75,17 +80,27 @@ public class DatabaseAdapter {
 
     public Cursor read(){
         SQLiteDatabase db = myDBHandler.getReadableDatabase();
-        String[] columns = {myDBHandler.COLUMN_ID, myDBHandler.COLUMN_NAME, myDBHandler.COLUMN_DESCRIPTION};
+        String[] columns = {myDBHandler.COLUMN_ID, myDBHandler.COLUMN_NAME, myDBHandler.COLUMN_DESCRIPTION, myDBHandler.COLUMN_IMAGE_RESTAURANT, myDBHandler.COLUMN_RESTAURANT_ADDRESS,myDBHandler.COLUMN_STARTHOUR,  myDBHandler.COLUMN_ENDHOUR, myDBHandler.COLUMN_PHONE, myDBHandler.COLUMN_EMAIL};
 
         return db.query(myDBHandler.TABLE_RESTAURANT, columns, null, null, null, null, null );
     }
 
     public Cursor read2(){
         SQLiteDatabase db = myDBHandler.getReadableDatabase();
-        String[] columns = {myDBHandler.COLUMN_MEAL_ID, myDBHandler.COLUMN_MEAL_NAME, myDBHandler.COLUMN_MEAL_DESCRIPTION, myDBHandler.COLUMN_MEAL_PRICE};
+        String[] columns = {myDBHandler.COLUMN_MEAL_ID, myDBHandler.COLUMN_MEAL_NAME, myDBHandler.COLUMN_MEAL_DESCRIPTION, myDBHandler.COLUMN_MEAL_PRICE, myDBHandler.COLUMN_ID_RESTORANA, myDBHandler.COLUMN_MEAL_TAG};
 
         return db.query(myDBHandler.TABLE_MEALS, columns, null, null, null, null, null );
     }
+
+    public Cursor read3(){
+        SQLiteDatabase db = myDBHandler.getReadableDatabase();
+        String[] columns = {myDBHandler.COLUMN_TAG_ID, myDBHandler.COLUMN_TAG_NAME};
+
+        return db.query(myDBHandler.TABLE_MEALS, columns, null, null, null, null, null );
+    }
+
+
+
 
 
 }

@@ -3,6 +3,7 @@
 
 
     <CheckBoxPreference android:key="spl"
+        android:id="@+id/splashscreenOff"
         android:title="Splash Screen"
         android:summary="Turn on/off splash screen." />
 
