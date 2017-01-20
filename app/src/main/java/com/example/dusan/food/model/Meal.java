@@ -13,7 +13,27 @@ public class Meal {
     private double price;
     private int idRest;
     private int idTag;
+    private String image;
 
+
+    public Meal(int id, String name, String description, double price, String image, int idRest, int idTag) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.idRest = idRest;
+        this.idTag = idTag;
+
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public int getIdRest() {
         return idRest;

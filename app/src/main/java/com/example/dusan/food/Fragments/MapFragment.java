@@ -32,15 +32,7 @@ import java.util.List;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     ArrayList<Restaurant> restaurants;
-    private static final LatLng Index = new LatLng(45.251685, 19.840804);
-    private static final LatLng Toster = new LatLng(45.249943, 19.850586);
-    private static final LatLng Roma = new LatLng(45.249933 , 19.847285);
-    private static final LatLng Savoca = new LatLng(45.261256, 19.831923);
 
-    private Marker mIndex;
-    private Marker mToster;
-    private Marker mRoma;
-    private Marker mSavoca;
 
     private GoogleMap mMap;
 
@@ -135,23 +127,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         }
 
 
-        
-
-      //  mMap = googleMap;
 
 
-       // mIndex = mMap.addMarker(new MarkerOptions().position(Index).title("Index house"));
-
-       // mToster = mMap.addMarker(new MarkerOptions().position(Toster).title("Toster"));
-
-       // mRoma = mMap.addMarker(new MarkerOptions().position(Roma).title("Roma"));
-
-      //  mSavoca = mMap.addMarker(new MarkerOptions().position(Savoca).title("Savoca"));
-
-       // googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Index, 13));
-
-
-        mMap.setOnMarkerClickListener(this);
 
     }
 
@@ -175,7 +152,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             if(naziv == nazivv){
 
                 String desc = restaurants.get(2).getDescription();
-                String img = restaurants.get(3).getDescription();
+                String img = restaurants.get(3).getImg();
                 String addressa = restaurants.get(4).getAddressa();
                 Integer startHour = restaurants.get(5).getStartHour();
                 Integer endHour = restaurants.get(6).getEndHour();
@@ -185,6 +162,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 Intent intent = new Intent(getActivity().getBaseContext(), RestaurantActivity.class);
                 intent.putExtra("name", nazivv);
                 intent.putExtra("descr", desc);
+                intent.putExtra("img", img);
                 intent.putExtra("address", addressa);
                 intent.putExtra("startHour", startHour);
                 intent.putExtra("endHour", endHour);
@@ -196,6 +174,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             count++;
         }
 
-       return  false;
+       return false;
     }
 }

@@ -2,6 +2,9 @@ package com.example.dusan.food.Fragments;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +27,7 @@ import com.example.dusan.food.model.Restaurant;
 
 import org.w3c.dom.Text;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -74,11 +79,12 @@ public class MealInfoFragment extends Fragment {
             String name = c.getString(1);
             String desc = c.getString(2);
             Double price = c.getDouble(3);
-            Integer idRest = c.getInt(4);
-            Integer idTag = c.getInt(5);
+            String img = c.getString(4);
+            Integer idRest = c.getInt(5);
+            Integer idTag = c.getInt(6);
 
 
-            Meal m = new Meal(id, name, desc, price,idRest, idTag);
+            Meal m = new Meal(id, name, desc, price,img ,idRest, idTag);
 
 
 
@@ -127,7 +133,13 @@ public class MealInfoFragment extends Fragment {
             makeText.setText(currentMeal.getName());
             TextView mText = (TextView) itemView.findViewById(R.id.descMeal);
             mText.setText(currentMeal.getDescription());
+            ImageView imageView = (ImageView) itemView.findViewById(R.id.meal_icon);
 
+            String photo = currentMeal.getImage();
+
+            File imgFile = new File(photo);
+            Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            imageView.setImageBitmap(bitmap);
 
 
 
@@ -156,6 +168,7 @@ public class MealInfoFragment extends Fragment {
                 i.putExtra("name", clickedMeal.getName());
                 i.putExtra("descr", clickedMeal.getDescription());
                 i.putExtra("price", cena);
+                i.putExtra("img", clickedMeal.getImage());
                 startActivity(i);
 
             }

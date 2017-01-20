@@ -59,7 +59,7 @@
             <ImageView
                 android:id="@+id/slikameal"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/kobasicaa"
+
                 android:layout_width="200dp"
                 android:layout_height="200dp" />
 

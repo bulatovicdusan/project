@@ -1,6 +1,7 @@
 package com.example.dusan.food.activities;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,20 +30,28 @@ import com.example.dusan.food.R;
 import com.example.dusan.food.activities.Preferences;
 import com.example.dusan.food.database.DatabaseAdapter;
 
+import java.security.Permission;
+
 
 public class MainActivity extends AppCompatActivity {
+
+  private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
     DatabaseAdapter db;
     FragmentTransaction mFragmentTransaction;
-    private static final int REQUEST_READ_STORAGE = 112;
-    private String[] permissions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        storagePermissions(this);
 
         /**
          *Setup the DrawerLayout and NavigationView
@@ -140,6 +149,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+    public static void storagePermissions(Activity activity){
+
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        if(permission != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
+        }
+
     }
 
 

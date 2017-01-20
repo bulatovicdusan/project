@@ -45,9 +45,6 @@ import java.util.List;
 
 public class RestaurantsFragment extends Fragment{
     ArrayList<Restaurant> restaurants;
-    DatabaseAdapter db;
-    MyDBHandler myDBHandler;
-    private static final int REQUEST_READ_STORAGE = 112;
 
 
     @Nullable
@@ -68,18 +65,6 @@ public class RestaurantsFragment extends Fragment{
 
         restaurants = new ArrayList<>();
 
-        /*
-        boolean hasPermission = (ContextCompat.checkSelfPermission(getActivity(),
-                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
-        if (!hasPermission) {
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                    REQUEST_READ_STORAGE);
-        }
-
-        */
-
-
 
 
 
@@ -95,25 +80,7 @@ public class RestaurantsFragment extends Fragment{
 
 
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode)
-        {
-            case REQUEST_READ_STORAGE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                {
-                    //reload my activity with permission granted or use the features what required the permission
 
-
-                } else
-                {
-                    Toast.makeText(getActivity(), "The app was not allowed to write to your storage. Hence, it cannot function properly. Please consider granting it this permission", Toast.LENGTH_LONG).show();
-                }
-            }
-        }
-
-    }
 
 
 
@@ -191,12 +158,13 @@ public class RestaurantsFragment extends Fragment{
             TextView desc = (TextView) itemView.findViewById(R.id.descRest);
             desc.setText(currentRestaurant.getDescription());
 
-          //  String photo = currentRestaurant.getImg();
-         //   ImageView img = (ImageView) itemView.findViewById(R.id.item_icon);
-          //  String photoPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath() +"/"+ photo;
-          //  File imgFile = new File(photoPath);
-          //  Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-         //   img.setImageBitmap(bitmap);
+            String photo = currentRestaurant.getImg();
+         //   String nesto = "/storage/6B85-2924/DCIM/restoranslike/indexHouse.jpg";
+            ImageView img = (ImageView) itemView.findViewById(R.id.item_icon);
+         //   String photoPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath() +"/"+ photo;
+            File imgFile = new File(photo);
+            Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            img.setImageBitmap(bitmap);
 
 
 
@@ -241,6 +209,7 @@ public class RestaurantsFragment extends Fragment{
                 i.putExtra("endHour", endHour);
                 i.putExtra("phone", clickedRest.getPhone());
                 i.putExtra("email", clickedRest.getEmail());
+                i.putExtra("img", clickedRest.getImg());
                 startActivity(i);
 
             }

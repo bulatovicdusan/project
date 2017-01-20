@@ -1,6 +1,8 @@
 package com.example.dusan.food.Fragments;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dusan.food.R;
@@ -25,6 +28,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.w3c.dom.Text;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -91,6 +95,11 @@ public class RestaurantInfoFragment extends Fragment implements OnMapReadyCallba
         startHoure.setText(getActivity().getIntent().getStringExtra("startHour"));
         TextView endHoure = (TextView) theView.findViewById(R.id.endHour);
         endHoure.setText(getActivity().getIntent().getStringExtra("endHour"));
+        ImageView imageView = (ImageView) theView.findViewById(R.id.slika);
+        String photo = getActivity().getIntent().getStringExtra("img");
+        File imgFile = new File(photo);
+        Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+        imageView.setImageBitmap(bitmap);
 
 
 

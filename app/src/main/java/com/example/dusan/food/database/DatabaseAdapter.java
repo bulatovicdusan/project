@@ -87,7 +87,7 @@ public class DatabaseAdapter {
 
     public Cursor read2(){
         SQLiteDatabase db = myDBHandler.getReadableDatabase();
-        String[] columns = {myDBHandler.COLUMN_MEAL_ID, myDBHandler.COLUMN_MEAL_NAME, myDBHandler.COLUMN_MEAL_DESCRIPTION, myDBHandler.COLUMN_MEAL_PRICE, myDBHandler.COLUMN_ID_RESTORANA, myDBHandler.COLUMN_MEAL_TAG};
+        String[] columns = {myDBHandler.COLUMN_MEAL_ID, myDBHandler.COLUMN_MEAL_NAME, myDBHandler.COLUMN_MEAL_DESCRIPTION, myDBHandler.COLUMN_MEAL_PRICE, myDBHandler.COLUMN_MEAL_IMAGE,myDBHandler.COLUMN_ID_RESTORANA, myDBHandler.COLUMN_MEAL_TAG};
 
         return db.query(myDBHandler.TABLE_MEALS, columns, null, null, null, null, null );
     }

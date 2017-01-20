@@ -2,6 +2,8 @@ package com.example.dusan.food.activities;
 
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.service.notification.NotificationListenerService;
@@ -15,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +25,8 @@ import com.example.dusan.food.Fragments.TabFragment2;
 import com.example.dusan.food.R;
 
 import org.w3c.dom.Text;
+
+import java.io.File;
 
 /**
  * Created by wubon on 1/18/2017.
@@ -66,6 +71,11 @@ public class MealActivity extends AppCompatActivity implements View.OnClickListe
         mealDesc.setText(getIntent().getStringExtra("descr"));
         TextView price = (TextView) findViewById(R.id.price);
         price.setText(getIntent().getStringExtra("price") + " din");
+        ImageView imageView = (ImageView) findViewById(R.id.slikameal);
+        String photo = getIntent().getStringExtra("img");
+        File imgFile = new File(photo);
+        Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+        imageView.setImageBitmap(bitmap);
 
         button = (Button) findViewById(R.id.buybutton);
         button.setOnClickListener(this);
